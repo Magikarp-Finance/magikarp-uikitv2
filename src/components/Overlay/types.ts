@@ -1,4 +1,5 @@
 export type OverlayProps = {
-  show: boolean;
-  zIndex?: number;
-};
+	show: boolean
+	isDark?: boolean
+	zIndex?: number
+}

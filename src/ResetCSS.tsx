@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 const ResetCSS = createGlobalStyle`
   /* prettier-ignore */
@@ -21,6 +21,10 @@ const ResetCSS = createGlobalStyle`
     font-size: 100%;
     vertical-align: baseline;
   }
+
+  *,::before,::after {
+  box-sizing: border-box;
+}
   /* HTML5 display-role reset for older browsers */
   /* prettier-ignore */
   article, aside, details, figcaption, figure, 
@@ -30,6 +34,9 @@ const ResetCSS = createGlobalStyle`
   body {
     line-height: 1;
     font-size: 16px;
+    min-height: 100% !important;
+    height:100%;
+    overflow:hidden;
   }
   ol,
   ul {
@@ -68,6 +75,17 @@ const ResetCSS = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Number */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
   /* Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
@@ -80,6 +98,27 @@ const ResetCSS = createGlobalStyle`
     box-shadow: inset 0 0 5px ${({ theme }) => theme.colors.input}; 
     border-radius: 10px;
   }
-`;
 
-export default ResetCSS;
+  /* Slider */ 
+  input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  input[type=range]:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  }
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+  }  
+`
+
+export default ResetCSS
